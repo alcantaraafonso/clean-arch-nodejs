@@ -5,7 +5,7 @@ export default class Address {
     _number: number;
 
     //Eu preciso de todas as propriedades para criar um endereço
-    constructor(street: string, city: string, zipCode: string, number: number) {
+    constructor(street: string, number: number, zipCode: string, city: string) {
         this._street = street;
         this._city = city;
         this._zipCode = zipCode;
