@@ -13,6 +13,10 @@ export default class FindCustomerUseCase {
   }
 
   async execute(input: InputFindCustomerDto): Promise<OutputFindCustomerDto> {
+
+    // O método find é um método de um repositório que consulta o customer pelo id
+    // e retorna um objeto DTO.
+    // O objeto Customer (entity) nunca deve ser retornado/trafegado para fora do domínio.
     const customer = await this.customerRepository.find(input.id);
 
     return {

@@ -26,7 +26,7 @@ describe("Product repository test", () => {
     it("should create a customer", async() => {
         const customerRepository = new CustomerRepository();
         const customer = new Customer("123", "Customer 1");
-        const address = new Address("Street 1", "City 1", "zipcode", 20);
+        const address = new Address("Street 1", 20, "zipcode", "City 1");
         customer.changeAddress(address);
         await customerRepository.create(customer);
         const customerModel = await CustomerModel.findOne({ where: {id: "123" } });
@@ -46,7 +46,7 @@ describe("Product repository test", () => {
     it("should update a customer", async() => {
         const customerRepository = new CustomerRepository();
         const customer = new Customer("1", "Customer 1");
-        const address = new Address("Street 1", "City 1", "zipcode", 20);
+        const address = new Address("Street 1", 20, "zipcode", "City 1");
         customer.changeAddress(address);
         await customerRepository.create(customer);
         const customerModel = await CustomerModel.findOne({ where: {id: "1" } });
@@ -80,7 +80,7 @@ describe("Product repository test", () => {
     it("should find a customer by id", async() => {
         const customerRepository = new CustomerRepository();
         const customer = new Customer("1", "Customer 1");
-        const address = new Address("Street 1", "City 1", "zipcode", 20);
+        const address = new Address("Street 1", 20, "zipcode", "City 1");
         customer.changeAddress(address);
         await customerRepository.create(customer);
 
@@ -100,14 +100,14 @@ describe("Product repository test", () => {
     it("should find all customers", async() => {
         const customerRepository = new CustomerRepository();
         const customer = new Customer("1", "Customer 1");
-        const address = new Address("Street 1", "City 1", "zipcode 1", 1);
+        const address = new Address("Street 1",20, "zipcode", "City 1");
         customer.changeAddress(address);
         customer.addRewardPoints(10);
         customer.activate();
         await customerRepository.create(customer);
         
         const customer2 = new Customer("2", "Customer 2");
-        const address2 = new Address("Street 2", "City 2", "zipcode 2", 2);
+        const address2 = new Address("Street 2", 2, "zipcode", "City 2");
         customer2.changeAddress(address2);
         customer2.addRewardPoints(20);
         await customerRepository.create(customer2);
