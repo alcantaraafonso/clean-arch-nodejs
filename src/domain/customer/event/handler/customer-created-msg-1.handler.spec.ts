@@ -89,7 +89,7 @@ describe("Log 1 event test", () => {
         });
         eventDispatcher.notify(customerCreatedEvent);
 
-        const address = new Address('Rua 1', '12345-678', 'São Paulo', 2);
+        const address = new Address('Rua 1', 2, '12345-678', 'São Paulo');
         customer.changeAddress(address);
 
         const addressChangedEvent = new CustomerAddressChangedEvent({ 
