@@ -17,6 +17,9 @@ export default class Customer {
     //A diferença entre o setName e o changeName é que o setName está na classe por estar
     //Já o changeName traz consigo a intenção de mudar o nome do cliente a partir de uma regra de negócio
     changeName(newName: string) {
+        if (newName.length === 0) {
+            throw new Error("Nome inválido");
+        }
         this._name = newName;
     }
 
