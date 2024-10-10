@@ -1,4 +1,3 @@
-import { NIL } from "uuid";
 import CreateProductUseCase from "./create.product.usecase";
 const input = {
   name: "Prod 1",
@@ -43,10 +42,11 @@ describe("Unit test create product use case", () => {
     const productRepository = MockRepository();
     const productCreateUseCase = new CreateProductUseCase(productRepository);
     
+    input.name = "a";
     input.price = 0;
 
     await expect(productCreateUseCase.execute(input)).rejects.toThrow(
-      "Price must be greater than zero"
+      "Price must be greater than 0"
     );
   });
 
