@@ -7,14 +7,22 @@ describe("Customer unit tests", () => {
         expect(() => {
             let customer = new Customer("", "John Doe");
 
-        }).toThrowError("ID é requerido"); //As mensagens das exceções devem ser iguais
+        }).toThrowError("Customer: ID é requerido"); //As mensagens das exceções devem ser iguais
     });
 
     it("should throw error when name is empty", () => { //O nome do teste deve ser claro e objetivo
 
         expect(() => {
             let customer = new Customer("123", "");
-        }).toThrowError("Nome inválido"); //As mensagens das exceções devem ser iguais
+        }).toThrowError("Customer: Nome é requerido"); //As mensagens das exceções devem ser iguais
+    });
+
+
+    it("should throw error when name and ID are empty", () => { //O nome do teste deve ser claro e objetivo
+
+        expect(() => {
+            let customer = new Customer("", "");
+        }).toThrowError("Customer: ID é requerido,Customer: Nome é requerido"); //As mensagens das exceções devem ser iguais
     });
 
     it("should change name", () => {
