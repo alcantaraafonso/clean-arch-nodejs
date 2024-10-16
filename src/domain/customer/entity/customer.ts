@@ -25,7 +25,7 @@ export default class Customer extends  Entity{
     //Já o changeName traz consigo a intenção de mudar o nome do cliente a partir de uma regra de negócio
     changeName(newName: string) {
         if (newName.length === 0) {
-            throw new Error("Nome inválido");
+            this.notification.addError({ message: "Nome é requerido", context: "Customer" });
         }
         this._name = newName;
     }
