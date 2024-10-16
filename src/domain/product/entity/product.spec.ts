@@ -7,7 +7,7 @@ describe("Product unit tests", () => {
         //Assert
         expect(() => {
             let product = new Product("", "Product 1", 100);
-        }).toThrowError("ID is required");
+        }).toThrowError("Product: ID is required");
 
         
     });
@@ -18,7 +18,7 @@ describe("Product unit tests", () => {
         //Assert
         expect(() => { 
             let product = new Product("123", "", 100);
-        }).toThrowError("Name is required");
+        }).toThrowError("Product: Name is required");
     });
 
     it("should throw error when price is less than or equal to 0", () => {
@@ -27,7 +27,7 @@ describe("Product unit tests", () => {
         //Assert
         expect(() => {
             let product = new Product("123", "Product 1", 0);
-        }).toThrowError("Price must be greater than 0");
+        }).toThrowError("Product: Price must be greater than 0");
     });
 
     it("should change name", () => { 
@@ -52,4 +52,10 @@ describe("Product unit tests", () => {
         //Assert
         expect(product.price).toBe(200);
     });
+
+    it("should throw error when name and id are empty", () => {
+        expect(() => {
+          const product = new Product("", "", 1);
+        }).toThrowError("Product: ID is required,Product: Name is required");
+      });
 });
