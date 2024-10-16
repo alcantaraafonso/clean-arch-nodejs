@@ -1,17 +1,24 @@
+
+import Entity from "../../@shared/entity/entity.abstract";
+import NotificationError from "../../@shared/notification/notification.error";
 import Address from "../value-object/address";
 
-export default class Customer {
-
-    private _id: string;
+export default class Customer extends  Entity{
     private _name: string = "";
     private _address!: Address;
     private _active: boolean = false;
     private _rewardPoints: number = 0;
 
     constructor(id: string, name: string) {
+        super();
+        
         this._id = id;
         this._name = name;
         this.validate(); //Aqui é um exemplo de como podemos validar o objeto (autovalidation principle)
+
+        if (this.notification.hasErrors()) {
+            throw new NotificationError(this.notification.getErrors());
+        }
     }
 
     //A diferença entre o setName e o changeName é que o setName está na classe por estar
@@ -40,16 +47,12 @@ export default class Customer {
     }
 
     validate() {
-        if (this._id.length === 0) {
-            throw new Error("ID é requerido");
+        if (this.id.length === 0) {
+            this.notification.addError({ message: "ID é requerido", context: "Customer" });
         }
         if (this._name.length === 0) {
-            throw new Error("Nome inválido");
+            this.notification.addError({ message: "Nome é requerido", context: "Customer" });
         }
-    }
-
-    get id(): string {
-        return this._id;
     }
 
     get address(): Address {

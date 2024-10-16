@@ -46,6 +46,6 @@ describe("Unit Test create customer use case", () => {
         input.name = "";
         
 
-        await expect(usecase.execute(input)).rejects.toThrow("Nome inválido");
+        await expect(usecase.execute(input)).rejects.toThrow("Customer: Nome é requerido");
     });
 });
