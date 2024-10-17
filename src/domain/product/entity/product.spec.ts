@@ -27,7 +27,7 @@ describe("Product unit tests", () => {
         //Assert
         expect(() => {
             let product = new Product("123", "Product 1", 0);
-        }).toThrowError("Product: Price must be greater than 0");
+        }).toThrowError("Product: Price must be greater than zero");
     });
 
     it("should change name", () => { 
