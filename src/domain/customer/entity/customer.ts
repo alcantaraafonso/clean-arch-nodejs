@@ -1,6 +1,7 @@
 
 import Entity from "../../@shared/entity/entity.abstract";
 import NotificationError from "../../@shared/notification/notification.error";
+import CustomerValidatorFactory from "../factory/customer.validator.factory";
 import Address from "../value-object/address";
 
 export default class Customer extends  Entity{
@@ -47,12 +48,7 @@ export default class Customer extends  Entity{
     }
 
     validate() {
-        if (this.id.length === 0) {
-            this.notification.addError({ message: "ID é requerido", context: "Customer" });
-        }
-        if (this._name.length === 0) {
-            this.notification.addError({ message: "Nome é requerido", context: "Customer" });
-        }
+        CustomerValidatorFactory.create().validate(this);
     }
 
     get address(): Address {
